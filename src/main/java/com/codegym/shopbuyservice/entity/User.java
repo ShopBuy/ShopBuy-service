@@ -19,9 +19,6 @@ public class User {
     @Column(name = "ID")
     private long id;
 
-    @Column(name = "USERNAME", unique = true, nullable = false)
-    private String username;
-
     @Column(name = "PASSWORD", nullable = false)
     private String password;
 
