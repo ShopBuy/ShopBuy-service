@@ -1,6 +1,7 @@
 package com.codegym.shopbuyservice.service.impl;
 
 import com.codegym.shopbuyservice.converter.IUserConverter;
+import com.codegym.shopbuyservice.converter.ipml.UserConverter;
 import com.codegym.shopbuyservice.dto.UserDto;
 import com.codegym.shopbuyservice.dto.payload.request.RegisterRequest;
 import com.codegym.shopbuyservice.dto.payload.response.RegisterResponse;
@@ -13,12 +14,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UserService implements IUserService {
-    @Autowired
-    private IUserRepository iUserRepository;
+public class UserServiceImpl implements IUserService {
 
-    @Autowired
-    private IUserConverter iUserConverter;
+@Autowired
+private IUserConverter iUserConverter;
+@Autowired
+private IUserRepository iUserRepository;
+
     @Override
     public RegisterResponse registerUser(RegisterRequest request) {
         try {

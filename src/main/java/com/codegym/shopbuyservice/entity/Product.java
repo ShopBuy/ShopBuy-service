@@ -48,7 +48,7 @@ public class Product {
     private SubCategory subCategory;
 
     @OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
-    private List<ProductImage> imageProductList ;
+    private List<ImageProduct> imageProductList ;
 
     @OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
     private List<Review> reviews ;

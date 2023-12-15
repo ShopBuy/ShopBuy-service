@@ -19,17 +19,11 @@ public class User {
     @Column(name = "ID")
     private long id;
 
-    @Column(name = "USERNAME", unique = true, nullable = false)
-    private String username;
-
-    @Column(name = "PASSWORD", nullable = false)
-    private String password;
-
     @Column(name = "EMAIL", unique = true, nullable = false)
     private String email;
 
-    @Column(name = "GENDER", unique = true, nullable = false)
-    private String gender;
+    @Column(name = "PASSWORD", nullable = false)
+    private String password;
 
     @Column(name = "ROLE")
     private String role;
@@ -43,6 +37,9 @@ public class User {
     @Column(name = "DATE_OF_BIRTH")
     private Date dateOfBirth;
 
+    @Column(name ="PHONE_NUMBER")
+    private String phoneNumber;
+
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private List<Address> addressList ;
 
@@ -54,5 +51,4 @@ public class User {
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private Cart cart;
-
 }
