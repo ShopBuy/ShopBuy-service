@@ -30,8 +30,8 @@ public class Address {
     @Column(name = "CITY")
     private String city;
 
-    @Column(name = "CONTACT")
-    private String contact;
+    @Column(name = "PHONE_NUMBER")
+    private String phoneNumber;
 
     @Column(name = "RECEIVER")
     private String receiver;

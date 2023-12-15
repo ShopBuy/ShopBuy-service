@@ -30,8 +30,8 @@ public class Product {
     @Column(name = "STOCK")
     private int stock;
 
-    @Column(name = "GENDEREDCLOTHING")
-    private String genderedClothing;
+//    @Column(name = "GENDEREDCLOTHING")    //đã có trong category
+//    private String genderedClothing;
 
     @Column(name = "DESCRIPTION")
     private String description;
@@ -51,7 +51,7 @@ public class Product {
     private SubCategory subCategory;
 
     @OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
-    private List<ProductImage> imageProductList ;
+    private List<ImageProduct> imageProductList ;
 
     @OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
     private List<Review> reviews ;

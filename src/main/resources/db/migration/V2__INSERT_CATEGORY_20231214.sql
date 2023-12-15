@@ -1,0 +1,13 @@
+INSERT INTO `shopbuy_service`.`category` (`ID`, `NAME`, `GENDER`, `IS_SHOWN`) VALUES ('1', 'ÁO', 'NỮ', '1');
+INSERT INTO `shopbuy_service`.`category` (`ID`, `NAME`, `GENDER`, `IS_SHOWN`) VALUES ('2', 'QUẦN', 'NỮ', '1');
+INSERT INTO `shopbuy_service`.`category` (`ID`, `NAME`, `GENDER`, `IS_SHOWN`) VALUES ('3', 'ĐẦM & VÁY', 'NỮ', '1');
+INSERT INTO `shopbuy_service`.`category` (`ID`, `NAME`, `GENDER`, `IS_SHOWN`) VALUES ('4', 'ĐỒ MẶC NHÀ', 'NỮ', '1');
+INSERT INTO `shopbuy_service`.`category` (`ID`, `NAME`, `GENDER`, `IS_SHOWN`) VALUES ('5', 'ĐỒ MẶC NGOÀI', 'NỮ', '1');
+INSERT INTO `shopbuy_service`.`category` (`ID`, `NAME`, `GENDER`, `IS_SHOWN`) VALUES ('6', 'ÁO', 'NAM', '1');
+INSERT INTO `shopbuy_service`.`category` (`ID`, `NAME`, `GENDER`, `IS_SHOWN`) VALUES ('7', 'QUẦN', 'NAM', '1');
+INSERT INTO `shopbuy_service`.`category` (`ID`, `NAME`, `GENDER`, `IS_SHOWN`) VALUES ('8', 'ĐỒ MẶC NHÀ', 'NAM', '1');
+INSERT INTO `shopbuy_service`.`category` (`ID`, `NAME`, `GENDER`, `IS_SHOWN`) VALUES ('9', 'ĐỒ MẶC NGOÀI', 'NAM', '1');
+INSERT INTO `shopbuy_service`.`category` (`ID`, `NAME`, `GENDER`, `IS_SHOWN`) VALUES ('10', 'ÁO', 'TRẺ EM', '1');
+INSERT INTO `shopbuy_service`.`category` (`ID`, `NAME`, `GENDER`, `IS_SHOWN`) VALUES ('11', 'QUẦN', 'TRẺ EM', '1');
+INSERT INTO `shopbuy_service`.`category` (`ID`, `NAME`, `GENDER`, `IS_SHOWN`) VALUES ('12', 'ĐỒ MẶC NHÀ', 'TRẺ EM', '1');
+INSERT INTO `shopbuy_service`.`category` (`ID`, `NAME`, `GENDER`, `IS_SHOWN`) VALUES ('13', 'ĐỒ MẶC NGOÀI', 'TRẺ EM', '1');

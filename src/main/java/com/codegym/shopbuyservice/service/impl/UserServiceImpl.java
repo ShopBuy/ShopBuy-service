@@ -1,4 +1,4 @@
 package com.codegym.shopbuyservice.service.impl;
 
-public class UserService {
+public class UserServiceImpl {
 }
