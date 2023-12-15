@@ -19,11 +19,11 @@ public class User {
     @Column(name = "ID")
     private long id;
 
-    @Column(name = "PASSWORD", nullable = false)
-    private String password;
-
     @Column(name = "EMAIL", unique = true, nullable = false)
     private String email;
+
+    @Column(name = "PASSWORD", nullable = false)
+    private String password;
 
     @Column(name = "GENDER", unique = true, nullable = false)
     private String gender;
