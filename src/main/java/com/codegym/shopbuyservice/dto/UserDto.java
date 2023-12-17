@@ -1,5 +1,6 @@
 package com.codegym.shopbuyservice.dto;
 
+import com.codegym.shopbuyservice.entity.Role;
 import lombok.*;
 
 @AllArgsConstructor
@@ -12,5 +13,6 @@ public class UserDto {
     private String email;
     private String name ;
     private String token;
-    private String role;
+    private Role role;
 }
+

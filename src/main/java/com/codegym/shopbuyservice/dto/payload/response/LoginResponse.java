@@ -10,7 +10,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class UserResponse {
+public class LoginResponse {
     private UserDto data;
     private int statusCode;
     private String message;

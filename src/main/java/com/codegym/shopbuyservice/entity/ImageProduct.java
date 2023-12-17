@@ -14,7 +14,7 @@ import org.hibernate.annotations.Where;
 @AllArgsConstructor
 @Table(name = "IMAGE_PRODUCT")
 @Where(clause = "IS_DELETED = 0")
-public class ProductImage {
+public class ImageProduct {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

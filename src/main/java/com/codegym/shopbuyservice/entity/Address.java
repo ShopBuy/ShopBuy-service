@@ -11,7 +11,8 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "ADDRESS")
-public class Address {
+public class
+Address {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,8 +31,8 @@ public class Address {
     @Column(name = "CITY")
     private String city;
 
-    @Column(name = "CONTACT")
-    private String contact;
+    @Column(name = "PHONE_NUMBER")
+    private String phoneNumber;
 
     @Column(name = "RECEIVER")
     private String receiver;
