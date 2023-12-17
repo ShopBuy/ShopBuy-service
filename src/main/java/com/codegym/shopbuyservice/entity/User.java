@@ -28,8 +28,9 @@ public class User {
     @Column(name = "GENDER", unique = true, nullable = false)
     private String gender;
 
-    @Column(name = "ROLE")
-    private String role;
+    @Column(name = "PHONE_NUMBER")
+    private String phoneNumber;
+
 
     @Column(name="IS_DELETED")
     private boolean isDeleted;

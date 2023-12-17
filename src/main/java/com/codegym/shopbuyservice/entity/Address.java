@@ -11,7 +11,8 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "ADDRESS")
-public class Address {
+public class
+Address {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

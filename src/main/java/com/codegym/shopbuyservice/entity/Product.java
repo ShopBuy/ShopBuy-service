@@ -30,9 +30,6 @@ public class Product {
     @Column(name = "STOCK")
     private int stock;
 
-//    @Column(name = "GENDEREDCLOTHING")    //đã có trong category
-//    private String genderedClothing;
-
     @Column(name = "DESCRIPTION")
     private String description;
 
