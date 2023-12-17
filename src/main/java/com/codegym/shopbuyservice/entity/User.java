@@ -44,10 +44,9 @@ public class User {
 
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private List<Address> addressList ;
-
-    @OneToOne
-    @JoinColumn(name = "ROLE_ID")
-    private Role roleId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "ROLE_ID", referencedColumnName = "id", nullable = false)
+    private Role role;
 
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private List<Review> reviews ;

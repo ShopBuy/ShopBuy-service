@@ -8,6 +8,7 @@ import com.codegym.shopbuyservice.dto.payload.response.RegisterResponse;
 import com.codegym.shopbuyservice.security.JwtTokenProvider;
 import com.codegym.shopbuyservice.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -29,9 +30,16 @@ public class AuthController {
 
     @PostMapping("/register")
     public ResponseEntity<RegisterResponse> registerUser(@RequestBody RegisterRequest request) {
-        RegisterResponse response = iUserService.registerUser(request);
-        return ResponseEntity.ok(response);
-    }
+        try{   RegisterResponse response = iUserService.registerUser(request);
+        if (response != null) {
+            return ResponseEntity.ok(response);
+        }
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        } catch (Exception e){
+            RegisterResponse Response = new RegisterResponse();
+           Response.setMessage("Lỗi" + e);
+            return ResponseEntity.ok(Response);
+        }}
     @PostMapping("/login")
     public ResponseEntity<?> Login(@Validated @RequestBody LoginResquest loginRequest) {
         try{

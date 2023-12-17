@@ -36,7 +36,7 @@ private IUserRepository iUserRepository;
             newUser.setPassword(encodedPassword);
             //có thể tinh chỉnh role để thêm chức năng register theo role
             Role role = roleRepository.findById(1L).orElse(null);
-            newUser.setRoleId(role);
+            newUser.setRole(role);
             iUserRepository.save(newUser);
             UserDto userDto = iUserConverter.convertToDto(newUser);
             userDto.setRole(role);

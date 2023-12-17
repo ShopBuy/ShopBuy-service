@@ -15,4 +15,5 @@ public class RegisterRequest {
     private String phoneNumber;
     private String fullName;
     private Date dateOfBirth;
+    private Long RoleId;
 }
