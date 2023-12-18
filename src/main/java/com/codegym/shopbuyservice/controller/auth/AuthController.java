@@ -30,11 +30,9 @@ public class AuthController {
 
     @PostMapping("/register")
     public ResponseEntity<RegisterResponse> registerUser(@RequestBody RegisterRequest request) {
-        try{   RegisterResponse response = iUserService.registerUser(request);
-        if (response != null) {
-            return ResponseEntity.ok(response);
-        }
-        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        try{
+            RegisterResponse response = iUserService.registerUser(request,1L);
+            return new ResponseEntity<>(response,HttpStatus.OK);
         } catch (Exception e){
             RegisterResponse Response = new RegisterResponse();
            Response.setMessage("Lỗi" + e);

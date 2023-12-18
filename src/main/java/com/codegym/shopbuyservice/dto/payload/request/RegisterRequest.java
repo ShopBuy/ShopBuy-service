@@ -1,6 +1,5 @@
 package com.codegym.shopbuyservice.dto.payload.request;
 
-import com.codegym.shopbuyservice.entity.Role;
 import lombok.*;
 
 import java.util.Date;

@@ -1,7 +1,6 @@
 package com.codegym.shopbuyservice.service.impl;
 
 import com.codegym.shopbuyservice.converter.IUserConverter;
-import com.codegym.shopbuyservice.converter.ipml.UserConverter;
 import com.codegym.shopbuyservice.dto.UserDto;
 import com.codegym.shopbuyservice.dto.payload.request.LoginResquest;
 import com.codegym.shopbuyservice.dto.payload.request.RegisterRequest;
@@ -27,19 +26,21 @@ public class UserServiceImpl implements IUserService {
 private IUserRepository iUserRepository;
     @Autowired
     private IRoleRepository roleRepository;
+    @Autowired
+    private RoleService roleService;
 
     @Override
-    public RegisterResponse registerUser(RegisterRequest request) {
+    public RegisterResponse registerUser(RegisterRequest request,Long id) {
         try {
             User newUser = iUserConverter.convertToEntity(request);
             String encodedPassword = passwordEncoder.encode(request.getPassword());
             newUser.setPassword(encodedPassword);
             //có thể tinh chỉnh role để thêm chức năng register theo role
-            Role role = roleRepository.findById(1L).orElse(null);
+            Role role = roleRepository.findById(2L).orElse(null);
             newUser.setRole(role);
             iUserRepository.save(newUser);
             UserDto userDto = iUserConverter.convertToDto(newUser);
-            userDto.setRole(role);
+            userDto.setRoleId(role.getId());
             RegisterResponse response = new RegisterResponse();
             response.setData(userDto);
             response.setMessage("Registration successful!");

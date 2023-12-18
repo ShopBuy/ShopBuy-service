@@ -13,7 +13,7 @@ public class UserConverter implements IUserConverter {
     public UserDto convertToDto(User user) {
         UserDto userDto = new UserDto();
         BeanUtils.copyProperties(user,userDto);
-        return userDto;
+
 //        if (user == null) {
 //            return null;
 //        }
@@ -22,8 +22,8 @@ public class UserConverter implements IUserConverter {
 //        userDTO.setId(user.getId());
 //        userDTO.setEmail(user.getEmail());
 //        userDTO.setName(user.getFullName());
-//        userDTO.setRole(user.getRole());
-//        return userDTO;
+        userDto.setRoleId(user.getRole().getId());
+        return userDto;
     }
     @Override
     public User convertToEntity(RegisterRequest request) {
