@@ -13,15 +13,6 @@ public class UserConverter implements IUserConverter {
     public UserDto convertToDto(User user) {
         UserDto userDto = new UserDto();
         BeanUtils.copyProperties(user,userDto);
-
-//        if (user == null) {
-//            return null;
-//        }
-//        UserDto userDTO = new UserDto();
-//       BeanUtils.copyProperties(user, userDTO);
-//        userDTO.setId(user.getId());
-//        userDTO.setEmail(user.getEmail());
-//        userDTO.setName(user.getFullName());
         userDto.setRoleId(user.getRole().getId());
         return userDto;
     }
