@@ -1,13 +1,18 @@
 package com.codegym.shopbuyservice.dto;
 
-import lombok.Data;
+import com.codegym.shopbuyservice.entity.Role;
+import lombok.*;
 
-import java.util.Date;
-@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@Builder
 public class UserDto {
+    private Long id;
     private String email;
-    private String password;
-    private String fullName;
-    private String phoneNumber;
-    private Date dateOfBirth;
+    private String name ;
+    private String token;
+    private long roleId;
 }
+

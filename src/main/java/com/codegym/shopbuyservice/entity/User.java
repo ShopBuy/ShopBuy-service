@@ -35,6 +35,7 @@ public class User {
     @Column(name="IS_DELETED")
     private boolean isDeleted;
 
+
     @Column(name = "FULL_NAME")
     private String fullName;
 
@@ -43,6 +44,9 @@ public class User {
 
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private List<Address> addressList ;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "ROLE_ID")
+    private Role role;
 
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private List<Review> reviews ;
