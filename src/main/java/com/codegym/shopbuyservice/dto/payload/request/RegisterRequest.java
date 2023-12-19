@@ -1,10 +1,12 @@
 package com.codegym.shopbuyservice.dto.payload.request;
 
-import lombok.Data;
+import lombok.*;
 
 import java.util.Date;
-@Data
-
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 public class RegisterRequest {
     private String email;
     private String password;
@@ -12,4 +14,5 @@ public class RegisterRequest {
     private String phoneNumber;
     private String fullName;
     private Date dateOfBirth;
+    private Long RoleId;
 }

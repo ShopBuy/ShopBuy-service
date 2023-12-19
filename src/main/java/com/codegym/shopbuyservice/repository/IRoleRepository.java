@@ -1,11 +1,13 @@
 package com.codegym.shopbuyservice.repository;
 
-import com.codegym.shopbuyservice.entity.User;
+import com.codegym.shopbuyservice.entity.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-@Repository
-public interface IUserRepository extends JpaRepository<User,Long> {
+import java.util.Optional;
 
-    User findUserByEmail(String email);
+@Repository
+
+public interface IRoleRepository extends JpaRepository<Role, Long> {
+
 }

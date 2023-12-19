@@ -6,7 +6,6 @@ import com.codegym.shopbuyservice.dto.payload.request.RegisterRequest;
 import com.codegym.shopbuyservice.entity.User;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Component;
-
 @Component
 public class UserConverter implements IUserConverter {
 
@@ -14,9 +13,9 @@ public class UserConverter implements IUserConverter {
     public UserDto convertToDto(User user) {
         UserDto userDto = new UserDto();
         BeanUtils.copyProperties(user,userDto);
+        userDto.setRoleId(user.getRole().getId());
         return userDto;
     }
-
     @Override
     public User convertToEntity(RegisterRequest request) {
         User user = new User();
