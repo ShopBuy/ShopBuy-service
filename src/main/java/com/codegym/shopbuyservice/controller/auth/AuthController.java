@@ -1,11 +1,15 @@
 package com.codegym.shopbuyservice.controller.auth;
 
+import com.codegym.shopbuyservice.dto.ProductDto;
 import com.codegym.shopbuyservice.dto.UserDto;
 import com.codegym.shopbuyservice.dto.payload.request.LoginResquest;
 import com.codegym.shopbuyservice.dto.payload.request.RegisterRequest;
+import com.codegym.shopbuyservice.dto.payload.response.FindProductResponse;
+import com.codegym.shopbuyservice.dto.payload.response.FindProductsReponse;
 import com.codegym.shopbuyservice.dto.payload.response.LoginResponse;
 import com.codegym.shopbuyservice.dto.payload.response.RegisterResponse;
 import com.codegym.shopbuyservice.security.JwtTokenProvider;
+import com.codegym.shopbuyservice.service.IProductService;
 import com.codegym.shopbuyservice.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,6 +21,9 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+import java.util.Optional;
+
 @CrossOrigin(value = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api/auth")
@@ -27,6 +34,10 @@ public class AuthController {
     private JwtTokenProvider tokenProvider;
     @Autowired
     private AuthenticationManager authenticationManager;
+
+
+    @Autowired
+    private IProductService iProductService;
 
     @PostMapping("/register")
     public ResponseEntity<RegisterResponse> registerUser(@RequestBody RegisterRequest request) {
@@ -59,4 +70,6 @@ public class AuthController {
             return ResponseEntity.ok(loginResponse);
         }
     }
+
+
 }

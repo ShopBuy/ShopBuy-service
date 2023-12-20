@@ -91,6 +91,9 @@ public class SecurityConfiguration {
 
         http.authorizeHttpRequests((authorize) -> authorize
                 .requestMatchers("/api/auth/**").permitAll());
+        http.authorizeHttpRequests((authorize) -> authorize
+                .requestMatchers("/api/home/**").permitAll());
+
 
         http.rememberMe((remember) -> remember
                 .tokenRepository(this.persistentTokenRepository())

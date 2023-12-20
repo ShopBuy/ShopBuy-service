@@ -2,17 +2,21 @@ package com.codegym.shopbuyservice.dto.payload.response;
 
 import com.codegym.shopbuyservice.dto.ProductDto;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import lombok.Builder;
-import lombok.Data;
+import lombok.*;
 
 import java.util.List;
 import java.util.Optional;
 
-@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 @Builder
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class FindProductReponse {
+public class FindProductsReponse {
     List<Optional<ProductDto>> data;
+
     private int statusCode;
+
     private String message;
 }

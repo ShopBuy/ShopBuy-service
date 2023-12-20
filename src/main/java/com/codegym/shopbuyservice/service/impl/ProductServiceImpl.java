@@ -12,14 +12,17 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+
 @Service
 public class ProductServiceImpl implements IProductService {
-@Autowired
-private IProductRepository iProductRepository;
-@Autowired
-private INameNormalizationService iNameNormalizationService;
-@Autowired
-private IProductConvect iProductConvect;
+
+    @Autowired
+    private IProductRepository iProductRepository;
+    @Autowired
+    private INameNormalizationService iNameNormalizationService;
+    @Autowired
+    private IProductConvect iProductConvect;
+
     @Override
     public List<Optional<ProductDto>> findProductByName(String nameProduct) {
         nameProduct = iNameNormalizationService.normalizeName(nameProduct);

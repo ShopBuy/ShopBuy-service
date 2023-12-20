@@ -1,7 +1,8 @@
 package com.codegym.shopbuyservice.controller;
 
 import com.codegym.shopbuyservice.dto.ProductDto;
-import com.codegym.shopbuyservice.dto.payload.response.FindProductReponse;
+import com.codegym.shopbuyservice.dto.payload.response.FindProductResponse;
+import com.codegym.shopbuyservice.dto.payload.response.FindProductsReponse;
 import com.codegym.shopbuyservice.service.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,19 +20,18 @@ public class HomeController {
     @Autowired
     private IProductService iProductService;
     @GetMapping("/search")
-
     public ResponseEntity<?> getByName (@RequestParam(value = "name", required = true) String nameProduct, @RequestParam(value = "type", required = false) String type){
         if ("all".equals(type)) {
             List<Optional<ProductDto>> product = iProductService.findProductByName(nameProduct);
-            FindProductReponse response;
+            FindProductsReponse response;
             if (!product.isEmpty()) {
-                response = FindProductReponse.builder()
+                response = FindProductsReponse.builder()
                         .data(product)
                         .statusCode(HttpStatus.OK.value())
                         .message("Success")
                         .build();
             } else {
-                response = FindProductReponse.builder()
+                response = FindProductsReponse.builder()
                         .statusCode(HttpStatus.NOT_FOUND.value())
                         .message("Not found Movies")
                         .build();
@@ -39,15 +39,15 @@ public class HomeController {
             return ResponseEntity.ok(response);
         } else {
             ProductDto productDto = iProductService.findByName(nameProduct);
-            FindProductReponse response;
+            FindProductResponse response;
             if (productDto != null) {
-                response = FindProductReponse.builder()
-                        .data((List<Optional<ProductDto>>) productDto)
+                response = FindProductResponse.builder()
+                        .data(productDto)
                         .statusCode(HttpStatus.OK.value())
                         .message("Success")
                         .build();
             } else {
-                response = FindProductReponse.builder()
+                response = FindProductResponse.builder()
                         .statusCode(HttpStatus.NOT_FOUND.value())
                         .message("Not found Movie")
                         .build();

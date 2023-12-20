@@ -2,9 +2,13 @@ package com.codegym.shopbuyservice.dto;
 
 import com.codegym.shopbuyservice.entity.Category;
 import com.codegym.shopbuyservice.entity.SubCategory;
-import lombok.Data;
+import lombok.*;
 
-@Data
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class ProductDto {
     private long id;
 
@@ -23,12 +27,7 @@ public class ProductDto {
 
     private int star;
 
-
     private boolean isDeleted;
 
 
-    private Category category;
-
-
-    private SubCategory subCategory;
 }
