@@ -25,6 +25,8 @@ public class RegisterRequest {
     })
     private String password;
     private String gender;
+    @NotBlank(message = "Số điện thoại không được trống")
+    @Pattern(regexp = "^[0-9]{10}$", message = "Số điện thoại phải là 10 chữ số")
     private String phoneNumber;
     private String fullName;
     private Date dateOfBirth;
