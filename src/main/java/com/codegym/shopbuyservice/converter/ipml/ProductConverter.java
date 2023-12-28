@@ -1,6 +1,7 @@
 package com.codegym.shopbuyservice.converter.ipml;
 
 import com.codegym.shopbuyservice.converter.IProductConvect;
+import com.codegym.shopbuyservice.dto.ProductDetailDto;
 import com.codegym.shopbuyservice.dto.ProductDto;
 import com.codegym.shopbuyservice.entity.Product;
 import org.springframework.beans.BeanUtils;
@@ -28,4 +29,11 @@ public class ProductConverter implements IProductConvect {
         }
         return listdto;
     }
+    @Override
+    public ProductDetailDto convertToDTOs(Product product) {
+        ProductDetailDto dto = new ProductDetailDto();
+        BeanUtils.copyProperties(product, dto);
+        return dto;
+    }
+
 }

@@ -15,7 +15,6 @@ import java.util.List;
 public class CategoryDto {
     private long id;
 
-
     private String name;
 
     private String gender;
