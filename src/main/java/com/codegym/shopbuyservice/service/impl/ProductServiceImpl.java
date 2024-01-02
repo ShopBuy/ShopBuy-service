@@ -1,6 +1,7 @@
 package com.codegym.shopbuyservice.service.impl;
 
 import com.codegym.shopbuyservice.converter.IProductConvect;
+import com.codegym.shopbuyservice.dto.ProductDetailDto;
 import com.codegym.shopbuyservice.dto.ProductDto;
 import com.codegym.shopbuyservice.entity.Product;
 import com.codegym.shopbuyservice.repository.IProductRepository;
@@ -52,5 +53,12 @@ public class ProductServiceImpl implements IProductService {
             }
         }
         return movie.map(value -> iProductConvect.convertToDTO(value)).orElse(null);
+    }
+
+    @Override
+    public ProductDetailDto detailProduct(Long productId) throws Exception {
+        Product product = iProductRepository.findProductById(productId).orElseThrow(() -> new Exception("Sản phẩm không tồn tại"));
+        ProductDetailDto productDetailDto = iProductConvect.convertToDTOs(product);
+        return productDetailDto ;
     }
 }
