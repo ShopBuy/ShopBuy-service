@@ -1,12 +1,16 @@
 package com.codegym.shopbuyservice.controller;
 
 import com.codegym.shopbuyservice.dto.ProductDto;
+import com.codegym.shopbuyservice.dto.payload.request.RegisterRequest;
 import com.codegym.shopbuyservice.dto.payload.response.FindProductResponse;
 import com.codegym.shopbuyservice.dto.payload.response.FindProductsReponse;
+import com.codegym.shopbuyservice.dto.payload.response.RegisterResponse;
 import com.codegym.shopbuyservice.service.IProductService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -55,5 +59,9 @@ public class HomeController {
             return ResponseEntity.ok(response);
         }
     }
+    @GetMapping("/cartList")
+    public ResponseEntity<?> showListCart (@RequestBody @Valid RegisterRequest request, BindingResult bindingResult) {
 
-}
+
+
+    }
