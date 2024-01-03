@@ -4,6 +4,7 @@ import com.codegym.shopbuyservice.converter.IProductConvect;
 import com.codegym.shopbuyservice.dto.ProductDetailDto;
 import com.codegym.shopbuyservice.dto.ProductDto;
 import com.codegym.shopbuyservice.entity.Product;
+import com.codegym.shopbuyservice.entity.Variant;
 import com.codegym.shopbuyservice.repository.IProductRepository;
 import com.codegym.shopbuyservice.service.INameNormalizationService;
 import com.codegym.shopbuyservice.service.IProductService;

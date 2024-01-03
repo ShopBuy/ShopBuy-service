@@ -1,5 +1,7 @@
 package com.codegym.shopbuyservice.dto;
 
+import com.codegym.shopbuyservice.entity.Color;
+import com.codegym.shopbuyservice.entity.Size;
 import lombok.*;
 
 @Getter
@@ -17,5 +19,4 @@ public class VariantDto {
 
     private SizeDto sizeDto;
 
-    private ProductDto productDto;
 }

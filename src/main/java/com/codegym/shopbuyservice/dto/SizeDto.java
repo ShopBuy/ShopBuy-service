@@ -13,12 +13,7 @@ import java.util.List;
 @Builder
 public class SizeDto {
     private long id;
-
-
     private String name;
-
-
     private boolean isDeleted;
-
     private List<VariantDto> variantListDto;
 }
