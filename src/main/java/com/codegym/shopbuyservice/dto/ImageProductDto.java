@@ -8,7 +8,6 @@ import lombok.*;
 @NoArgsConstructor
 @Builder
 public class ImageProductDto {
-
     private long id;
     private String url;
     private boolean isDeleted;

@@ -12,6 +12,7 @@ import java.util.List;
 public class ProductDetailDto {
     private String name;
     private double price;
+
     private List<ImageProductDto> imageProductListDto ;
     private List<VariantDto> variantListDto;
 }

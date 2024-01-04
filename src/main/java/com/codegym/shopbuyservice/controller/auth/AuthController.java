@@ -2,6 +2,7 @@ package com.codegym.shopbuyservice.controller.auth;
 
 import com.codegym.shopbuyservice.dto.ProductDto;
 import com.codegym.shopbuyservice.dto.UserDto;
+import com.codegym.shopbuyservice.dto.payload.request.LoginGoogleRequest;
 import com.codegym.shopbuyservice.dto.payload.request.LoginResquest;
 import com.codegym.shopbuyservice.dto.payload.request.RegisterRequest;
 import com.codegym.shopbuyservice.dto.payload.response.FindProductResponse;
@@ -80,6 +81,23 @@ public class AuthController {
             return ResponseEntity.ok(loginResponse);
         }
     }
-
+    @PostMapping("/login-google")
+    public ResponseEntity<?> login(@RequestBody LoginGoogleRequest loginGoogleRequest) {
+        UserDto userDto = iUserService.loginGoogle(loginGoogleRequest);
+        LoginResponse response;
+        if (userDto != null) {
+            response = LoginResponse.builder()
+                    .data(userDto)
+                    .statusCode(HttpStatus.OK.value())
+                    .message("Success")
+                    .build();
+        } else {
+            response = LoginResponse.builder()
+                    .statusCode(HttpStatus.NOT_FOUND.value())
+                    .message("Failed")
+                    .build();
+        }
+        return ResponseEntity.ok(response);
+    }
 
 }
