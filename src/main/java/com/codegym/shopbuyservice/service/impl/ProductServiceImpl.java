@@ -1,14 +1,20 @@
 package com.codegym.shopbuyservice.service.impl;
 
 import com.codegym.shopbuyservice.converter.IProductConvect;
+import com.codegym.shopbuyservice.dto.PagingProductResponseDto;
 import com.codegym.shopbuyservice.dto.ProductDetailDto;
 import com.codegym.shopbuyservice.dto.ProductDto;
+import com.codegym.shopbuyservice.dto.payload.response.PagingProductResponse;
 import com.codegym.shopbuyservice.entity.Product;
 import com.codegym.shopbuyservice.entity.Variant;
+import com.codegym.shopbuyservice.repository.IProductPagingRepository;
 import com.codegym.shopbuyservice.repository.IProductRepository;
 import com.codegym.shopbuyservice.service.INameNormalizationService;
 import com.codegym.shopbuyservice.service.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -24,6 +30,8 @@ public class ProductServiceImpl implements IProductService {
     private INameNormalizationService iNameNormalizationService;
     @Autowired
     private IProductConvect iProductConvect;
+    @Autowired
+    private IProductPagingRepository iProductPagingRepository;
 
     @Override
     public List<Optional<ProductDto>> findProductByName(String nameProduct) {
@@ -61,5 +69,29 @@ public class ProductServiceImpl implements IProductService {
         Product product = iProductRepository.findProductById(productId).orElseThrow(() -> new Exception("Sản phẩm không tồn tại"));
         ProductDetailDto productDetailDto = iProductConvect.convertToDTOs(product);
         return productDetailDto ;
+    }
+
+    @Override
+    public PagingProductResponse findAll(int pageNumber, int pageSize) {
+        PageRequest pageRequest = PageRequest.of(pageNumber, pageSize);
+        Page<Product> productPage = iProductPagingRepository.findAll(pageRequest);
+        List<Product> productList = productPage.getContent();
+        List<ProductDto> productDtoList = new ArrayList<>();
+        for (Product product : productList){
+            ProductDto productDto = iProductConvect.convertToDTO(product);
+            productDtoList.add(productDto);
+        }
+        PagingProductResponseDto response = PagingProductResponseDto.builder()
+                .totalPages(productPage.getTotalPages())
+                .totalElements(productPage.getTotalElements())
+                .pageNumber(productPage.getNumber())
+                .size(productPage.getSize())
+                .data(productDtoList)
+                .build();
+        return PagingProductResponse.builder()
+                .data(response)
+                .message("Get movie page number " + pageNumber + " success")
+                .statusCode(HttpStatus.OK.value())
+                .build();
     }
 }

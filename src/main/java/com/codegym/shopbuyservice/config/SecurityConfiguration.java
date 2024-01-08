@@ -88,13 +88,12 @@ public class SecurityConfiguration {
         http.exceptionHandling(exceptionHandling -> exceptionHandling.authenticationEntryPoint(authEntryPoint)
                         .accessDeniedPage("/api/auth/access-denied"))
                 .sessionManagement((session) -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
-
         http.authorizeHttpRequests((authorize) -> authorize
                 .requestMatchers("/api/auth/**").permitAll());
         http.authorizeHttpRequests((authorize) -> authorize
                 .requestMatchers("/api/home/**").permitAll());
-
-
+        http.authorizeHttpRequests((authorize) -> authorize
+                .requestMatchers("/api/admin/**").permitAll());
         http.rememberMe((remember) -> remember
                 .tokenRepository(this.persistentTokenRepository())
                 .tokenValiditySeconds(24 * 60 * 60)

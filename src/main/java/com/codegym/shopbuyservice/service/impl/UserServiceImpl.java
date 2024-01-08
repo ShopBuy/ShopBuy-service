@@ -97,27 +97,28 @@ public class UserServiceImpl implements IUserService {
             if (idToken != null) {
                 GoogleIdToken.Payload payload = idToken.getPayload();
                 String email = payload.getEmail();
-                String token = jwtTokenProvider.generateToken(email);
+                String name = (String) payload.get("name");
                 User user = iUserRepository.findUserByEmail(email);
-                if (user != null) {
-                    userDto = iUserConverter.convertToDto(user);
-                    userDto.setToken(token);
-                } else {
-                    String name = (String) payload.get("name");
-                    Role role = roleRepository.findById(2L).orElse(null);
+
+                if (user == null) {
+                    Role role = roleRepository.findById(2L).orElseThrow(() -> new RuntimeException("Role not found"));
                     user = User.builder()
                             .email(email)
                             .fullName(name)
                             .role(role)
+
                             .build();
                     iUserRepository.save(user);
-                    userDto = iUserConverter.convertToDto(user);
-                    userDto.setToken(token);
                 }
+
+                String token = jwtTokenProvider.generateToken(email);
+                userDto = iUserConverter.convertToDto(user);
+                userDto.setToken(token);
             }
-            return userDto;
-        } catch (Exception ignored) {
-            return userDto;
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+        return userDto;
     }
+
 }
