@@ -39,4 +39,7 @@ public class Variant {
     @ManyToOne
     @JoinColumn(name="PRODUCT_ID")
     private Product product;
+
+    public Variant(long id, Product newProduct, Color colorNotFound, Size sizeNotFound, boolean deleted) {
+    }
 }
