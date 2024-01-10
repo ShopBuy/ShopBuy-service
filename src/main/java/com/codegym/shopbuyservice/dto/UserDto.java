@@ -11,7 +11,7 @@ import lombok.*;
 public class UserDto {
     private Long id;
     private String email;
-    private String name ;
+    private String fullName ;
     private String token;
     private long roleId;
 }

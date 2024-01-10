@@ -93,6 +93,8 @@ public class SecurityConfiguration {
                 .requestMatchers("/api/auth/**").permitAll());
         http.authorizeHttpRequests((authorize) -> authorize
                 .requestMatchers("/api/home/**").permitAll());
+        http.authorizeHttpRequests((authorize) -> authorize
+                .requestMatchers("/api/users/**").permitAll());
 
 
         http.rememberMe((remember) -> remember
