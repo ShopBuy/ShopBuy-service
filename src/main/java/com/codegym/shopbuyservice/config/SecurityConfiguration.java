@@ -34,8 +34,6 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 @EnableAutoConfiguration
 @EnableAsync
 @EnableWebSecurity
-//@ComponentScan(basePackages = {"com.codegym.phimchill", "com.codegym.phimchill.security",
-//        "com.codegym.phimchill.service.impl", "com.codegym.phimchill.repository"})
 public class SecurityConfiguration {
     @Autowired
     private UserDetailsServiceImpl userDetailsService;
@@ -92,8 +90,6 @@ public class SecurityConfiguration {
                 .requestMatchers("/api/auth/**").permitAll());
         http.authorizeHttpRequests((authorize) -> authorize
                 .requestMatchers("/api/home/**").permitAll());
-        http.authorizeHttpRequests((authorize) -> authorize
-                .requestMatchers("/api/admin/**").permitAll());
         http.rememberMe((remember) -> remember
                 .tokenRepository(this.persistentTokenRepository())
                 .tokenValiditySeconds(24 * 60 * 60)
