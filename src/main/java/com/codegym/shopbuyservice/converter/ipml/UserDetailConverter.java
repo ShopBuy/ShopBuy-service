@@ -9,11 +9,11 @@ import org.springframework.stereotype.Component;
 public class UserDetailConverter {
    public User toEntity(UserDetailRequest dto) {
       User user = new User();
-//      user.setEmail(dto.getEmail());
-//      user.setGender(dto.getGender());
-//      user.setFullName((dto.getFullName()));
-//      user.setDateOfBirth((dto.getDateOfBirth()));
-//      user.setPhoneNumber((dto.getPhoneNumber()));
+      user.setEmail(dto.getEmail());
+      user.setFullName((dto.getFullName()));
+      user.setDateOfBirth((dto.getDateOfBirth()));
+      user.setGender(dto.getGender());
+      user.setPhoneNumber((dto.getPhoneNumber()));
 //      user.setRole(dto.getRole());
       return user;
    }
@@ -23,9 +23,9 @@ public class UserDetailConverter {
       UserDetailResponse dto = new UserDetailResponse();
       dto.setId(entity.getId());
       dto.setEmail(entity.getEmail());
-      dto.setGender(entity.getGender());
       dto.setFullName(entity.getFullName());
       dto.setDateOfBirth((entity.getDateOfBirth()));
+      dto.setGender(entity.getGender());
       dto.setPhoneNumber((entity.getPhoneNumber()));
 //      dto.setRole(entity.getRole());
       return dto;
