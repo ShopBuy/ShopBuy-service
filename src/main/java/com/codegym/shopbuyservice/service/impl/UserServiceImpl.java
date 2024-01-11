@@ -6,6 +6,7 @@ import com.codegym.shopbuyservice.dto.UserDto;
 import com.codegym.shopbuyservice.dto.payload.request.LoginGoogleRequest;
 import com.codegym.shopbuyservice.dto.payload.request.LoginResquest;
 import com.codegym.shopbuyservice.dto.payload.request.RegisterRequest;
+import com.codegym.shopbuyservice.dto.payload.request.UserDetailRequest;
 import com.codegym.shopbuyservice.dto.payload.response.RegisterResponse;
 import com.codegym.shopbuyservice.dto.payload.response.UserDetailResponse;
 import com.codegym.shopbuyservice.entity.Role;
@@ -132,5 +133,21 @@ public class UserServiceImpl implements IUserService {
             throw new Exception("User not found");
         }
         return userDetailConverter.toDto(user);
+    }
+
+    @Override
+    public UserDetailResponse updateUserByEmail(String email, UserDetailRequest userDetailRequest) throws Exception {
+        User currentUser = iUserRepository.findUserByEmail(email);
+        if (currentUser == null) {
+            throw new Exception("User not found");
+        }
+        currentUser.setFullName(userDetailRequest.getFullName());
+        currentUser.setDateOfBirth(userDetailRequest.getDateOfBirth());
+        currentUser.setGender(userDetailRequest.getGender());
+        currentUser.setPhoneNumber(userDetailRequest.getPhoneNumber());
+
+        User user = iUserRepository.save(currentUser);
+        UserDetailResponse response = userDetailConverter.toDto(user);
+        return response;
     }
 }
