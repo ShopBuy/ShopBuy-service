@@ -62,4 +62,29 @@ public class ProductServiceImpl implements IProductService {
         ProductDetailDto productDetailDto = iProductConvect.convertToDTOs(product);
         return productDetailDto ;
     }
+
+    @Override
+    public void deleteProduct(Long id) {
+
+    }
+
+    @Override
+    public Product updateProduct(Long id, Product product) {
+        return null;
+    }
+
+    @Override
+    public List<Product> getAllProducts() {
+        return null;
+    }
+
+    @Override
+    public Product createProduct(Product product) {
+        return null;
+    }
+
+    @Override
+    public Product getProductById(Long id) {
+        return null;
+    }
 }

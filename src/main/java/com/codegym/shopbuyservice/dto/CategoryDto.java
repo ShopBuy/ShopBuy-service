@@ -5,12 +5,14 @@ import com.codegym.shopbuyservice.entity.SubCategory;
 import jakarta.persistence.Column;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
-import lombok.Builder;
-import lombok.Data;
+import lombok.*;
 
 import java.util.List;
 
-@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 @Builder
 public class CategoryDto {
     private long id;
@@ -21,7 +23,7 @@ public class CategoryDto {
 
     private boolean isShown;
 
-    private List<SubCategory> subCategories ;
+    private List<SubCategoryDto> subCategories ;
 
-    private List<Product> productList ;
+    private List<Long> productList ;
 }

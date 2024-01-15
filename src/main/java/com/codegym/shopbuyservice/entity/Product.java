@@ -39,8 +39,8 @@ public class Product {
     @Column(name = "IS_DELETED")
     private boolean isDeleted;
 
-    @ManyToOne
-    @JoinColumn(name = "CATEGORY_ID")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "category_id")
     private Category category;
 
     @ManyToOne
