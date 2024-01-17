@@ -18,6 +18,6 @@ public class UserDetailResponse {
    private String fullName;
    private Date dateOfBirth;
    private String phoneNumber;
-//   private String role;
-
+   //   private String role;
+   private String profileImageUrl;
 }

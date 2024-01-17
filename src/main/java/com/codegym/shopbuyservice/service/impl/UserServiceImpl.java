@@ -135,15 +135,18 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public UserDetailResponse updateUserByEmail(String email, UserDetailRequest userDetailRequest) throws Exception {
+    public UserDetailResponse updateUserByEmail(String email,
+                                                UserDetailRequest userDetailRequest) throws Exception {
         User currentUser = iUserRepository.findUserByEmail(email);
         if (currentUser == null) {
             throw new Exception("User not found");
         }
+
         currentUser.setFullName(userDetailRequest.getFullName());
         currentUser.setDateOfBirth(userDetailRequest.getDateOfBirth());
         currentUser.setGender(userDetailRequest.getGender());
         currentUser.setPhoneNumber(userDetailRequest.getPhoneNumber());
+        currentUser.setProfileImageUrl(userDetailRequest.getProfileImageUrl());
 
         User user = iUserRepository.save(currentUser);
         UserDetailResponse response = userDetailConverter.toDto(user);
