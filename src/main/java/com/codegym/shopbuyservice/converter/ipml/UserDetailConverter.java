@@ -15,6 +15,7 @@ public class UserDetailConverter {
       user.setGender(dto.getGender());
       user.setPhoneNumber((dto.getPhoneNumber()));
 //      user.setRole(dto.getRole());
+      user.setProfileImageUrl(dto.getProfileImageUrl());
       return user;
    }
 
@@ -28,6 +29,7 @@ public class UserDetailConverter {
       dto.setGender(entity.getGender());
       dto.setPhoneNumber((entity.getPhoneNumber()));
 //      dto.setRole(entity.getRole());
+      dto.setProfileImageUrl(entity.getProfileImageUrl());
       return dto;
    }
 }

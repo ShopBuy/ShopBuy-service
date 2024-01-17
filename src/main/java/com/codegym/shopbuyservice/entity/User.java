@@ -2,6 +2,8 @@ package com.codegym.shopbuyservice.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.web.multipart.MultipartFile;
+
 import java.sql.Date;
 import java.util.List;
 
@@ -41,6 +43,9 @@ public class User {
 
     @Column(name = "DATE_OF_BIRTH")
     private Date dateOfBirth;
+
+    @Column(name = "PROFILE_IMAGE_URL")
+    private String profileImageUrl;
 
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private List<Address> addressList ;

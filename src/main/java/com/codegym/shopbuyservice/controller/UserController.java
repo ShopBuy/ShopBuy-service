@@ -1,23 +1,25 @@
 package com.codegym.shopbuyservice.controller;
+
 import com.codegym.shopbuyservice.dto.payload.CommonResponse;
 import com.codegym.shopbuyservice.dto.payload.request.UserDetailRequest;
 import com.codegym.shopbuyservice.dto.payload.response.UserDetailResponse;
-
 import com.codegym.shopbuyservice.service.IUserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequestMapping("/api/users")
 @CrossOrigin("*")
 @RequiredArgsConstructor
-public class  UserController {
+public class UserController {
    private final IUserService userService;
+
    @GetMapping("/profile")
-   public ResponseEntity<?> getProfileUser() {
+   public ResponseEntity<?> getProfile() {
       try {
          String username = SecurityContextHolder.getContext().getAuthentication().getName();
          UserDetailResponse updatedUser = userService.getUserByEmail(username);
@@ -37,11 +39,14 @@ public class  UserController {
    }
 
    @PutMapping("/update-profile")
-   public ResponseEntity<?> updateByEmail(@RequestBody UserDetailRequest userDetailRequest) {
+   public ResponseEntity<?> updateProfileByEmail(@RequestBody UserDetailRequest userDetailRequest
+   ) {
       try {
          String username = SecurityContextHolder.getContext().getAuthentication().getName();
 
-         UserDetailResponse updatedUser = userService.updateUserByEmail(username, userDetailRequest);
+         UserDetailResponse updatedUser = userService.updateUserByEmail(
+                 username,
+                 userDetailRequest);
 
          CommonResponse commonResponse = new CommonResponse();
          commonResponse.setData(updatedUser);

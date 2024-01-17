@@ -7,12 +7,17 @@ import com.codegym.shopbuyservice.dto.payload.request.RegisterRequest;
 import com.codegym.shopbuyservice.dto.payload.request.UserDetailRequest;
 import com.codegym.shopbuyservice.dto.payload.response.RegisterResponse;
 import com.codegym.shopbuyservice.dto.payload.response.UserDetailResponse;
+import org.springframework.web.multipart.MultipartFile;
 
 public interface IUserService {
-    RegisterResponse registerUser(RegisterRequest request,Long Id) ;
+   RegisterResponse registerUser(RegisterRequest request, Long Id);
 
-    UserDto login(LoginResquest loginRequest);
-    UserDto loginGoogle(LoginGoogleRequest loginGoogleRequest);
-    UserDetailResponse getUserByEmail(String email) throws Exception;
-    UserDetailResponse updateUserByEmail(String email, UserDetailRequest userDetailRequest) throws Exception;
+   UserDto login(LoginResquest loginRequest);
+
+   UserDto loginGoogle(LoginGoogleRequest loginGoogleRequest);
+
+   UserDetailResponse getUserByEmail(String email) throws Exception;
+
+   UserDetailResponse updateUserByEmail(String email,
+                                        UserDetailRequest userDetailRequest) throws Exception;
 }

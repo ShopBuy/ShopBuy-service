@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.sql.Date;
 
@@ -18,6 +19,6 @@ public class UserDetailResponse {
    private String fullName;
    private Date dateOfBirth;
    private String phoneNumber;
-//   private String role;
-
+   //   private String role;
+   private String profileImageUrl;
 }
