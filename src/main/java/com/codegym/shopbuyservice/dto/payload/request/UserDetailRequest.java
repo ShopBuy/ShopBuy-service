@@ -1,7 +1,6 @@
 package com.codegym.shopbuyservice.dto.payload.request;
 
 import lombok.Data;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.sql.Date;
 
