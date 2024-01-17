@@ -10,9 +10,11 @@ import java.util.List;
 @NoArgsConstructor
 @Builder
 public class ProductDetailDto {
+    private Long id;
     private String name;
     private double price;
-
+    private CategoryDto categoryDto ;
+    private SubCategoryDto subCategoryDto;
     private List<ImageProductDto> imageProductListDto ;
     private List<VariantDto> variantListDto;
 }

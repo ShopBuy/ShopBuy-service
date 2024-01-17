@@ -43,8 +43,9 @@ public class ProductServiceImpl implements IProductService {
     @Autowired
     private ISubCategoryRepository subCategoryRepository;
     @Autowired
-    private IImageProductReposittory imageProductReposittory;
-    @Autowired IVariantReposittory variantReposittory;
+    private IImageProductRepository imageProductRepository;
+    @Autowired
+    IVariantRepository variantRepository;
 
 
     @Override
@@ -82,7 +83,19 @@ public class ProductServiceImpl implements IProductService {
     public ProductDetailDto detailProduct(Long productId) throws Exception {
         Product product = iProductRepository.findProductById(productId).orElseThrow(() -> new Exception("Sản phẩm không tồn tại"));
         ProductDetailDto productDetailDto = iProductConvect.convertToDTOs(product);
-        return productDetailDto ;
+        CategoryDto categoryDto = CategoryDto.builder()
+                .id(product.getCategory().getId())
+                .name(product.getCategory().getName())
+                .gender(product.getCategory().getGender())
+//                .subCategories(product.getCategory().getSubCategories())
+                .build();
+        SubCategoryDto subCategoryDto = SubCategoryDto.builder()
+                .id(product.getSubCategory().getId())
+                .name(product.getSubCategory().getName())
+                .build();
+        productDetailDto.setCategoryDto(categoryDto);
+        productDetailDto.setSubCategoryDto(subCategoryDto);
+        return productDetailDto;
     }
 
     @Override
@@ -91,7 +104,7 @@ public class ProductServiceImpl implements IProductService {
         Page<Product> productPage = iProductPagingRepository.findAll(pageRequest);
         List<Product> productList = productPage.getContent();
         List<ProductDto> productDtoList = new ArrayList<>();
-        for (Product product : productList){
+        for (Product product : productList) {
             ProductDto productDto = iProductConvect.convertToDTO(product);
             productDtoList.add(productDto);
         }
@@ -131,7 +144,7 @@ public class ProductServiceImpl implements IProductService {
                     .product(newProduct)
                     .build();
             imageProducts.add(imageProduct);
-            imageProductReposittory.save(imageProduct);
+            imageProductRepository.save(imageProduct);
         }
         newProduct.setImageProductList(imageProducts);
 
@@ -146,7 +159,7 @@ public class ProductServiceImpl implements IProductService {
                     .size(size)
                     .product(newProduct)
                     .build();
-            variantReposittory.save(variant);
+            variantRepository.save(variant);
             variants.add(variant);
         }
         newProduct.setVariantList(variants);
@@ -162,7 +175,7 @@ public class ProductServiceImpl implements IProductService {
     }
 
     @Override
-    public ProductResponseDto updateProduct(Long id,NewProductRequest productDto) throws Exception {
+    public ProductResponseDto updateProduct(Long id, NewProductRequest productDto) throws Exception {
         // Tìm kiếm sản phẩm dựa trên tên
         Product product = iProductRepository.findById(id)
                 .orElseThrow(() -> new Exception("Product not found with id: " + id));
@@ -187,6 +200,7 @@ public class ProductServiceImpl implements IProductService {
                 .build();
         return response;
     }
+
     @Override
     @Transactional
     public void deleteProduct(Long id) throws Exception {

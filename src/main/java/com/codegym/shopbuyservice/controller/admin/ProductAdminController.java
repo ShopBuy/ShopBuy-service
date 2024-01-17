@@ -14,7 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/admin/")
+@RequestMapping("/api/admin")
 @CrossOrigin(value = "*", maxAge = 3600)
 public class ProductAdminController {
     @Autowired
@@ -36,7 +36,7 @@ public class ProductAdminController {
         }
     }
     @GetMapping("/product/{productId}")
-    public ResponseEntity<ProductDetailResponseDto> getProductDetail(@PathVariable Long productId) {
+    public ResponseEntity<ProductDetailResponseDto> getProductId(@PathVariable Long productId) {
         ProductDetailResponseDto response = new ProductDetailResponseDto();
         try {
             ProductDetailDto productDetailDto = iProductService.detailProduct(productId);
@@ -50,7 +50,7 @@ public class ProductAdminController {
             return ResponseEntity.status(404).body(response);
         }
     }
-    @PutMapping("/{id}")
+    @PutMapping("/product/{id}")
     public ResponseEntity<?> updateProduct(@PathVariable Long id, @RequestBody NewProductRequest productDto) {
         try {
             ProductResponseDto response = iProductService.updateProduct(id, productDto);
