@@ -6,6 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface IProudctListRepository extends JpaRepository<Product,Long> {
+public interface IProductsListRepository extends JpaRepository<Product,Long> {
 
 }

@@ -34,8 +34,6 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 @EnableAutoConfiguration
 @EnableAsync
 @EnableWebSecurity
-//@ComponentScan(basePackages = {"com.codegym.phimchill", "com.codegym.phimchill.security",
-//        "com.codegym.phimchill.service.impl", "com.codegym.phimchill.repository"})
 public class SecurityConfiguration {
     @Autowired
     private UserDetailsServiceImpl userDetailsService;
@@ -84,18 +82,16 @@ public class SecurityConfiguration {
     protected SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.cors(cors -> cors.configurationSource(corsConfigurationSource()))
                 .csrf(AbstractHttpConfigurer::disable);
-
-        http.exceptionHandling(exceptionHandling -> exceptionHandling.authenticationEntryPoint(authEntryPoint)
-                        .accessDeniedPage("/api/auth/access-denied"))
-                .sessionManagement((session) -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
-
+//
+//        http.exceptionHandling(exceptionHandling -> exceptionHandling.authenticationEntryPoint(authEntryPoint)
+//                        .accessDeniedPage("/api/auth/access-denied"))
+//                .sessionManagement((session) -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
         http.authorizeHttpRequests((authorize) -> authorize
                 .requestMatchers("/api/auth/**").permitAll());
         http.authorizeHttpRequests((authorize) -> authorize
                 .requestMatchers("/api/home/**").permitAll());
         http.authorizeHttpRequests((authorize) -> authorize
-                .requestMatchers("/api/users/**").permitAll());
-
+                .requestMatchers("/api/admin/**").permitAll());
 
         http.rememberMe((remember) -> remember
                 .tokenRepository(this.persistentTokenRepository())

@@ -47,7 +47,7 @@ public class Product {
     @JoinColumn(name = "SUB_CATEGORY_ID")
     private SubCategory subCategory;
 
-    @OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "product", fetch = FetchType.LAZY,cascade = CascadeType.REMOVE)
     private List<ImageProduct> imageProductList ;
 
     @OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
@@ -59,6 +59,6 @@ public class Product {
     @OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
     private List<OrderLine> orderLineList ;
 
-    @OneToMany(mappedBy = "product")
+    @OneToMany(mappedBy = "product", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     private List<Variant> variantList;
 }

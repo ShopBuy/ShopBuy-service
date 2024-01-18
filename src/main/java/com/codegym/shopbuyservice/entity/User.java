@@ -23,10 +23,10 @@ public class User {
     @Column(name = "EMAIL", unique = true, nullable = false)
     private String email;
 
-    @Column(name = "PASSWORD", nullable = false)
+    @Column(name = "PASSWORD")
     private String password;
 
-    @Column(name = "GENDER", unique = true, nullable = false)
+    @Column(name = "GENDER", unique = true)
     private String gender;
 
     @Column(name = "PHONE_NUMBER")
@@ -61,5 +61,6 @@ public class User {
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private Cart cart;
+
 
 }

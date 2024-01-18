@@ -10,11 +10,6 @@ import java.util.List;
 @NoArgsConstructor
 @Builder
 public class SubCategoryDto {
-
     private long id;
     private String name;
-    private boolean isShown;
-    private CategoryDto categoryDto;
-    private List<ProductDto> productListDto ;
-
 }

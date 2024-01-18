@@ -21,7 +21,7 @@ public class CategoryDto {
 
     private boolean isShown;
 
-    private List<SubCategory> subCategories ;
+    private List<SubCategoryDto> subCategories ;
 
     private List<Product> productList ;
 }
