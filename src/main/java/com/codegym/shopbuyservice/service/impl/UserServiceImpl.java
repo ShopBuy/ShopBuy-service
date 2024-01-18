@@ -104,18 +104,15 @@ public class UserServiceImpl implements IUserService {
                 String email = payload.getEmail();
                 String name = (String) payload.get("name");
                 User user = iUserRepository.findUserByEmail(email);
-
                 if (user == null) {
                     Role role = roleRepository.findById(2L).orElseThrow(() -> new RuntimeException("Role not found"));
                     user = User.builder()
                             .email(email)
                             .fullName(name)
                             .role(role)
-
                             .build();
                     iUserRepository.save(user);
                 }
-
                 String token = jwtTokenProvider.generateToken(email);
                 userDto = iUserConverter.convertToDto(user);
                 userDto.setToken(token);

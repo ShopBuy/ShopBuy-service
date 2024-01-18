@@ -28,7 +28,7 @@ public class NewProductRequest {
 
     private int star;
 
-    private boolean isDeleted;
+//    private boolean isDeleted;
 
     private CategoryDto categoryDto ;
 
