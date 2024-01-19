@@ -7,5 +7,6 @@ import java.util.List;
 
 public interface ICategoryConverter {
     CategoryDto convertToDto(Category category);
+
     List<CategoryDto> convertToListDto (List<Category> categoryList);
 }

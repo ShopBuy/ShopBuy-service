@@ -91,6 +91,8 @@ public class SecurityConfiguration {
         http.authorizeHttpRequests((authorize) -> authorize
                 .requestMatchers("/api/home/**").permitAll());
         http.authorizeHttpRequests((authorize) -> authorize
+                .requestMatchers("/api/**").permitAll());
+        http.authorizeHttpRequests((authorize) -> authorize
                 .requestMatchers("/api/admin/**").permitAll());
         http.authorizeHttpRequests((authorize) -> authorize
                 .requestMatchers("/api/users/**").permitAll());

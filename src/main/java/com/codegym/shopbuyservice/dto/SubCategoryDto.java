@@ -9,7 +9,13 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class SubCategoryDto {
+    public class SubCategoryDto {
+
     private long id;
     private String name;
+    private boolean isShown;
+    private Long categoryId;
+    private List<Long> productListIds;
+
+
 }

@@ -1,6 +1,7 @@
 package com.codegym.shopbuyservice.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.Where;
@@ -31,8 +32,8 @@ public class Category {
     private boolean isShown;
 
     @OneToMany(mappedBy = "category", fetch = FetchType.LAZY)
-    private List<SubCategory> subCategories ;
+    private List<SubCategory> subCategories;
 
     @OneToMany(mappedBy = "category", fetch = FetchType.LAZY)
-    private List<Product> productList ;
+    private List<Product> productList;
 }

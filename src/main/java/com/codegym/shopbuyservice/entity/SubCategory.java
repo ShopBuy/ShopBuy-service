@@ -1,6 +1,7 @@
 package com.codegym.shopbuyservice.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import java.util.List;
@@ -27,8 +28,8 @@ public class SubCategory {
     @Column(name = "IS_SHOWN")
     private boolean isShown;
 
-    @ManyToOne
-    @JoinColumn(name = "CATEGORY_ID")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "category_id")
     private Category category;
 
     @OneToMany(mappedBy = "subCategory", fetch = FetchType.LAZY)

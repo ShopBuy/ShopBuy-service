@@ -42,7 +42,7 @@ public class AuthController {
     @Autowired
     private IProductService iProductService;
 
-    @PostMapping("/register")
+        @PostMapping("/register")
     public ResponseEntity<RegisterResponse> registerUser(@RequestBody @Valid RegisterRequest request, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             RegisterResponse response = new RegisterResponse();

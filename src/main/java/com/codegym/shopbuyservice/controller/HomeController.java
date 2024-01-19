@@ -3,16 +3,20 @@ package com.codegym.shopbuyservice.controller;
 import com.codegym.shopbuyservice.dto.CategoryDto;
 import com.codegym.shopbuyservice.dto.ProductDetailDto;
 import com.codegym.shopbuyservice.dto.ProductDto;
+import com.codegym.shopbuyservice.dto.payload.request.RegisterRequest;
 import com.codegym.shopbuyservice.dto.payload.response.CategoryResponseDto;
 import com.codegym.shopbuyservice.dto.payload.response.FindProductResponse;
 import com.codegym.shopbuyservice.dto.payload.response.FindProductsReponse;
+import com.codegym.shopbuyservice.dto.payload.response.RegisterResponse;
 import com.codegym.shopbuyservice.dto.payload.response.ProductDetailResponseDto;
 import com.codegym.shopbuyservice.service.ICategoryService;
 import com.codegym.shopbuyservice.service.IProductService;
+import jakarta.validation.Valid;
 import org.checkerframework.checker.units.qual.A;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -64,8 +68,12 @@ public class HomeController {
             return ResponseEntity.ok(response);
         }
     }
-
-
+//    @GetMapping("/cartList")
+//    public ResponseEntity<?> showListCart (@RequestBody @Valid RegisterRequest request, BindingResult bindingResult) {
+//
+//
+//
+//    }
     @GetMapping("/product/{productId}")
     public ResponseEntity<ProductDetailResponseDto> getProductDetail(@PathVariable Long productId) {
         ProductDetailResponseDto response = new ProductDetailResponseDto();
@@ -82,11 +90,11 @@ public class HomeController {
         }
     }
 
-    @GetMapping("/category/all")
-    public ResponseEntity<?> getAllCategory(){
-        CategoryResponseDto response = categoryService.fillAll();
-        return new ResponseEntity<>(response, HttpStatus.OK);
-    }
+//    @GetMapping("/category/all")
+//    public ResponseEntity<?> getAllCategory(){
+//        CategoryResponseDto response = categoryService.fillAll();
+//        return new ResponseEntity<>(response, HttpStatus.OK);
+//    }
 }
 
 
