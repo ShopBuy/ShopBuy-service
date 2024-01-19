@@ -2,6 +2,7 @@ package com.codegym.shopbuyservice.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+
 import java.sql.Date;
 import java.util.List;
 
@@ -22,10 +23,10 @@ public class User {
     @Column(name = "EMAIL", unique = true, nullable = false)
     private String email;
 
-    @Column(name = "PASSWORD", nullable = false)
+    @Column(name = "PASSWORD")
     private String password;
 
-    @Column(name = "GENDER", unique = true, nullable = false)
+    @Column(name = "GENDER", unique = true)
     private String gender;
 
     @Column(name = "PHONE_NUMBER")
@@ -42,6 +43,9 @@ public class User {
     @Column(name = "DATE_OF_BIRTH")
     private Date dateOfBirth;
 
+    @Column(name = "PROFILE_IMAGE_URL")
+    private String profileImageUrl;
+
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private List<Address> addressList ;
 
@@ -57,5 +61,6 @@ public class User {
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private Cart cart;
+
 
 }

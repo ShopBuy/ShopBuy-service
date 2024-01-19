@@ -1,14 +1,18 @@
 package com.codegym.shopbuyservice.controller;
 
+import com.codegym.shopbuyservice.dto.CategoryDto;
 import com.codegym.shopbuyservice.dto.ProductDetailDto;
 import com.codegym.shopbuyservice.dto.ProductDto;
 import com.codegym.shopbuyservice.dto.payload.request.RegisterRequest;
+import com.codegym.shopbuyservice.dto.payload.response.CategoryResponseDto;
 import com.codegym.shopbuyservice.dto.payload.response.FindProductResponse;
 import com.codegym.shopbuyservice.dto.payload.response.FindProductsReponse;
 import com.codegym.shopbuyservice.dto.payload.response.RegisterResponse;
 import com.codegym.shopbuyservice.dto.payload.response.ProductDetailResponseDto;
+import com.codegym.shopbuyservice.service.ICategoryService;
 import com.codegym.shopbuyservice.service.IProductService;
 import jakarta.validation.Valid;
+import org.checkerframework.checker.units.qual.A;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,6 +29,9 @@ public class HomeController {
 
     @Autowired
     private IProductService iProductService;
+    @Autowired
+    private ICategoryService categoryService;
+
     @GetMapping("/search")
     public ResponseEntity<?> getByName (@RequestParam(value = "name", required = true) String nameProduct, @RequestParam(value = "type", required = false,defaultValue = "all") String type){
         if ("all".equals(type)) {
@@ -82,6 +89,12 @@ public class HomeController {
             return ResponseEntity.status(404).body(response);
         }
     }
+
+//    @GetMapping("/category/all")
+//    public ResponseEntity<?> getAllCategory(){
+//        CategoryResponseDto response = categoryService.fillAll();
+//        return new ResponseEntity<>(response, HttpStatus.OK);
+//    }
 }
 
 

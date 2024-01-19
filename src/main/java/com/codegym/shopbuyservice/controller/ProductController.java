@@ -57,7 +57,7 @@ public class ProductController {
 
     // Xóa một sản phẩm
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteProduct(@PathVariable("id") Long id) {
+    public ResponseEntity<?> deleteProduct(@PathVariable("id") Long id) throws Exception {
         productService.deleteProduct(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }

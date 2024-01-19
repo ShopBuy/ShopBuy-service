@@ -12,5 +12,5 @@ public class UserDetailRequest {
    private Date dateOfBirth;
    private String phoneNumber;
    private String role;
-
+   private String profileImageUrl;
 }

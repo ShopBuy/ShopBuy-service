@@ -3,6 +3,7 @@ package com.codegym.shopbuyservice.service.impl;
 import com.codegym.shopbuyservice.converter.ICategoryConverter;
 import com.codegym.shopbuyservice.dto.CategoryDto;
 import com.codegym.shopbuyservice.dto.payload.response.CategoryListResponse;
+import com.codegym.shopbuyservice.dto.payload.response.CategoryResponseDto;
 import com.codegym.shopbuyservice.entity.Category;
 import com.codegym.shopbuyservice.repository.ICategoryRepository;
 import com.codegym.shopbuyservice.service.ICategoryService;
@@ -20,9 +21,9 @@ public class CategoryServiceImpl implements ICategoryService {
     private ICategoryConverter categoryConverter;
 
     @Override
-    public CategoryListResponse getAll() throws Exception{
+    public CategoryListResponse getAll() throws Exception {
         List<Category> categoryList = categoryRepository.findAll();
-        if(categoryList.isEmpty()){
+        if (categoryList.isEmpty()) {
             throw new Exception("Cannot get all categories");
         }
         List<CategoryDto> categoryDtoList = categoryConverter.convertToListDto(categoryList);
@@ -30,7 +31,8 @@ public class CategoryServiceImpl implements ICategoryService {
                 .data(categoryDtoList)
                 .message("Get All Categories Success")
                 .statusCode(200)
-                .build();    }
+                .build();
+    }
 
     @Override
     public Category createCategory(Category category) {

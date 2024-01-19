@@ -102,29 +102,27 @@ public class UserServiceImpl implements IUserService {
             if (idToken != null) {
                 GoogleIdToken.Payload payload = idToken.getPayload();
                 String email = payload.getEmail();
-                String token = jwtTokenProvider.generateToken(email);
+                String name = (String) payload.get("name");
                 User user = iUserRepository.findUserByEmail(email);
-                if (user != null) {
-                    userDto = iUserConverter.convertToDto(user);
-                    userDto.setToken(token);
-                } else {
-                    String name = (String) payload.get("name");
-                    Role role = roleRepository.findById(2L).orElse(null);
+                if (user == null) {
+                    Role role = roleRepository.findById(2L).orElseThrow(() -> new RuntimeException("Role not found"));
                     user = User.builder()
                             .email(email)
                             .fullName(name)
                             .role(role)
                             .build();
                     iUserRepository.save(user);
-                    userDto = iUserConverter.convertToDto(user);
-                    userDto.setToken(token);
                 }
+                String token = jwtTokenProvider.generateToken(email);
+                userDto = iUserConverter.convertToDto(user);
+                userDto.setToken(token);
             }
-            return userDto;
-        } catch (Exception ignored) {
-            return userDto;
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+        return userDto;
     }
+
     @Override
     public UserDetailResponse getUserByEmail(String email) throws Exception {
         User user = iUserRepository.findUserByEmail(email);
@@ -135,15 +133,18 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public UserDetailResponse updateUserByEmail(String email, UserDetailRequest userDetailRequest) throws Exception {
+    public UserDetailResponse updateUserByEmail(String email,
+                                                UserDetailRequest userDetailRequest) throws Exception {
         User currentUser = iUserRepository.findUserByEmail(email);
         if (currentUser == null) {
             throw new Exception("User not found");
         }
+
         currentUser.setFullName(userDetailRequest.getFullName());
         currentUser.setDateOfBirth(userDetailRequest.getDateOfBirth());
         currentUser.setGender(userDetailRequest.getGender());
         currentUser.setPhoneNumber(userDetailRequest.getPhoneNumber());
+        currentUser.setProfileImageUrl(userDetailRequest.getProfileImageUrl());
 
         User user = iUserRepository.save(currentUser);
         UserDetailResponse response = userDetailConverter.toDto(user);
