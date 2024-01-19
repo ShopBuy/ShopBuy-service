@@ -1,8 +1,13 @@
 package com.codegym.shopbuyservice.service.impl;
 
 import com.codegym.shopbuyservice.converter.IProductConvect;
+import com.codegym.shopbuyservice.converter.IProductListConverter;
+import com.codegym.shopbuyservice.dto.CategoryDto;
 import com.codegym.shopbuyservice.dto.ProductDetailDto;
 import com.codegym.shopbuyservice.dto.ProductDto;
+import com.codegym.shopbuyservice.dto.payload.response.CategoryListResponse;
+import com.codegym.shopbuyservice.dto.payload.response.ProductListResponseDto;
+import com.codegym.shopbuyservice.entity.Category;
 import com.codegym.shopbuyservice.entity.Product;
 import com.codegym.shopbuyservice.entity.Variant;
 import com.codegym.shopbuyservice.repository.IProductRepository;
@@ -24,6 +29,8 @@ public class ProductServiceImpl implements IProductService {
     private INameNormalizationService iNameNormalizationService;
     @Autowired
     private IProductConvect iProductConvect;
+    @Autowired
+    private IProductListConverter iProductListConverter;
 
     @Override
     public List<Optional<ProductDto>> findProductByName(String nameProduct) {
@@ -74,8 +81,18 @@ public class ProductServiceImpl implements IProductService {
     }
 
     @Override
-    public List<Product> getAllProducts() {
-        return null;
+    public ProductListResponseDto getAllProducts() throws Exception {
+        List<Product> productList = iProductRepository.findAll();
+        if(productList.isEmpty()){
+            throw new Exception("Cannot get all categories");
+        }
+        List<ProductDto> productDtos = iProductConvect.convertToListDTO(productList);
+
+        return ProductListResponseDto.builder()
+                .data(productDtos)
+                .message("Get All Categories Success")
+                .statusCode(200)
+                .build();
     }
 
     @Override

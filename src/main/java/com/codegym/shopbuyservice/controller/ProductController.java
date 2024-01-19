@@ -1,5 +1,8 @@
 package com.codegym.shopbuyservice.controller;
 
+import com.codegym.shopbuyservice.dto.payload.response.CategoryListResponse;
+import com.codegym.shopbuyservice.dto.payload.response.ErrorResponse;
+import com.codegym.shopbuyservice.dto.payload.response.ProductListResponseDto;
 import com.codegym.shopbuyservice.entity.Category;
 import com.codegym.shopbuyservice.entity.Product;
 import com.codegym.shopbuyservice.service.impl.ProductServiceImpl;
@@ -18,14 +21,20 @@ public class ProductController {
     @Autowired
     private ProductServiceImpl productService;
 
-    // Lấy danh sách các sản phẩm
     @GetMapping
-    public ResponseEntity<List<Product>> getAllProducts() {
-        List<Product> products = productService.getAllProducts();
-        return new ResponseEntity<>(products, HttpStatus.OK);
+    public ResponseEntity<?> getAllProducts() throws Exception {
+        try {
+            ProductListResponseDto response = productService.getAllProducts();
+            return new ResponseEntity<>(response, HttpStatus.OK);
+
+        } catch (Exception e) {
+            ErrorResponse response = new ErrorResponse();
+            response.setMessage(e.getMessage());
+            response.setStatusCode(400);
+            return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+        }
     }
 
-    // Tạo mới một sản phẩm
     @PostMapping
     public ResponseEntity<Product> createProduct(@RequestBody Product product) {
         Product newProduct = productService.createProduct(product);
