@@ -117,7 +117,7 @@ public class ProductServiceImpl implements IProductService {
                 .build();
         return PagingProductResponse.builder()
                 .data(response)
-                .message("Get movie page number " + pageNumber + " success")
+                .message("Get product page number " + pageNumber + " success")
                 .statusCode(HttpStatus.OK.value())
                 .build();
     }
@@ -129,7 +129,7 @@ public class ProductServiceImpl implements IProductService {
                 .price(productDto.getPrice())
                 .stock(productDto.getStock())
                 .description(productDto.getDescription())
-//                .star(productDto.getStar())
+                  .star(productDto.getStar())
 //                .isDeleted(productDto.isDeleted())
                 .category(categoryRepository.findById(productDto.getCategoryDto().getId())
                         .orElseThrow(() -> new Exception("Category not found")))
