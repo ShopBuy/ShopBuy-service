@@ -9,7 +9,6 @@ import org.springframework.stereotype.Component;
 public class UserDetailConverter {
    public User toEntity(UserDetailRequest dto) {
       User user = new User();
-      user.setEmail(dto.getEmail());
       user.setFullName((dto.getFullName()));
       user.setDateOfBirth((dto.getDateOfBirth()));
       user.setGender(dto.getGender());
