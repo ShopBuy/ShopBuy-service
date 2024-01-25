@@ -94,13 +94,15 @@ public class SecurityConfiguration {
       http.authorizeHttpRequests((authorize) -> authorize
               .requestMatchers("/api/categories/**").permitAll());
       http.authorizeHttpRequests((authorize) -> authorize
-              .requestMatchers("/api/subCategories/**").permitAll());    http.authorizeHttpRequests((authorize) -> authorize
+              .requestMatchers("/api/subCategories/**").permitAll());
+      http.authorizeHttpRequests((authorize) -> authorize
               .requestMatchers("/api/products/**").permitAll());
 
       http.rememberMe((remember) -> remember
               .tokenRepository(this.persistentTokenRepository())
               .tokenValiditySeconds(24 * 60 * 60)
       );
+
 
       // Use JwtAuthorizationFilter to check token -> get user info
       http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
