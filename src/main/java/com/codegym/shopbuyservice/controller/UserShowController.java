@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/users")
 @CrossOrigin("*")
 @RequiredArgsConstructor
-public class UserController {
+public class UserShowController {
    private final IUserService userService;
 
    @GetMapping("/profile")
