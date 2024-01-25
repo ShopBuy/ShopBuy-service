@@ -49,6 +49,7 @@ public class Product {
 
     @OneToMany(mappedBy = "product", fetch = FetchType.LAZY,cascade = CascadeType.REMOVE)
     private List<ImageProduct> imageProductList ;
+//    private List<ProductImage> imageProductList ;
 
     @OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
     private List<Review> reviews ;
