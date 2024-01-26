@@ -9,4 +9,5 @@ public class CategoryShowResponse {
    private long id;
    private String name;
    private String gender;
+   private boolean isShown;
 }
