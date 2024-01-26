@@ -20,7 +20,7 @@ INSERT INTO `shopbuy_service`.`color` (`NAME`, `CODE`, `ACRONYM`, `IS_DELETED`) 
 -- INSERT INTO `shopbuy_service`.`color` (`NAME`, `CODE`, `ACRONYM`, `IS_DELETED`) VALUES ('Orange', '#FF9900', 'OR', '0');
 
 -- -- Insert Variant
-INSERT INTO `shopbuy_service`.`variant` (`COLOR_ID`, `SIZE_ID`, `PRODUCT_ID`) VALUES ('3', '3', '16');
+INSERT INTO `shopbuy_service`.`variant` (`COLOR_ID`, `SIZE_ID`, `PRODUCT_ID`) VALUES ('3', '3', '1');
 INSERT INTO `shopbuy_service`.`variant` (`COLOR_ID`, `SIZE_ID`, `PRODUCT_ID`) VALUES ('4', '3', '1');
 INSERT INTO `shopbuy_service`.`variant` (`COLOR_ID`, `SIZE_ID`, `PRODUCT_ID`) VALUES ('5', '3', '1');
 INSERT INTO `shopbuy_service`.`variant` (`COLOR_ID`, `SIZE_ID`, `PRODUCT_ID`) VALUES ('6', '3', '1');

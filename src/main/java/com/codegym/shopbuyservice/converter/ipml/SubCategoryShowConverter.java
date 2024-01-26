@@ -19,7 +19,7 @@ public class SubCategoryShowConverter {
       return SubCategoryShowResponse.builder()
               .id(subCategory.getId())
               .name(subCategory.getName())
-              .category(categoryConverter.categoryToCategoryResponse(subCategory.getCategory()))
+              .category(categoryConverter.toCategoryDto(subCategory.getCategory()))
               .build();
    }
    public List<SubCategoryShowResponse> listSubCategoryToListSubCategoryResponse(List<SubCategory> subCategoryList) {
