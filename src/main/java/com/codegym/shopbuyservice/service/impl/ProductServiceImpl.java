@@ -87,7 +87,6 @@ public class ProductServiceImpl implements IProductService {
                 .id(product.getCategory().getId())
                 .name(product.getCategory().getName())
                 .gender(product.getCategory().getGender())
-//                .subCategories(product.getCategory().getSubCategories())
                 .build();
         SubCategoryDto subCategoryDto = SubCategoryDto.builder()
                 .id(product.getSubCategory().getId())
@@ -130,7 +129,6 @@ public class ProductServiceImpl implements IProductService {
                 .stock(productDto.getStock())
                 .description(productDto.getDescription())
                   .star(productDto.getStar())
-//                .isDeleted(productDto.isDeleted())
                 .category(categoryRepository.findById(productDto.getCategoryDto().getId())
                         .orElseThrow(() -> new Exception("Category not found")))
                 .subCategory(subCategoryRepository.findById(productDto.getSubCategoryDto().getId())
@@ -147,7 +145,6 @@ public class ProductServiceImpl implements IProductService {
             imageProductRepository.save(imageProduct);
         }
         newProduct.setImageProductList(imageProducts);
-
         List<Variant> variants = new ArrayList<>();
         for (VariantDto variantDto : productDto.getVariantListDto()) {
             Color color = colorRepository.findById(variantDto.getColorDto().getId())
@@ -163,7 +160,6 @@ public class ProductServiceImpl implements IProductService {
             variants.add(variant);
         }
         newProduct.setVariantList(variants);
-
         Product savedProduct = iProductRepository.save(newProduct);
         ProductResponseDto response = ProductResponseDto.builder()
                 .data(iProductConvect.convertToDTO(savedProduct))

@@ -13,6 +13,9 @@ public class ProductDetailDto {
     private Long id;
     private String name;
     private double price;
+    private int stock;
+    private int star;
+    private String description;
     private CategoryDto categoryDto ;
     private SubCategoryDto subCategoryDto;
     private List<ImageProductDto> imageProductListDto ;
