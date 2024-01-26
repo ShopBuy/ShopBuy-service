@@ -33,7 +33,7 @@ public class ProductShowConverter {
               .stock(product.getStock())
               .description(product.getDescription())
               .star(product.getStar())
-              .category(categoryConverter.categoryToCategoryResponse(product.getCategory()))
+              .category(categoryConverter.toCategoryDto(product.getCategory()))
               .subCategory(subCategoryConverter.subCategoryToSubCategoryResponse(product.getSubCategory()))
               .imageProductList(productImageConverter.listProductImageToListProductImageResponse(product.getImageProductList()))
 //              .reviews(reviewConverter.listReviewToListReviewResponse(product.getReviews()))
